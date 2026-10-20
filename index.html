@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>血櫻・說書皇帝｜AI 虛擬角色</title>
+<meta name="description" content="AI 生成的虛擬角色「血櫻」：一位說書皇帝，用一分鐘帶你走進 1661 年的熱蘭遮城。">
+<style>
+:root{--bg:#120b16;--panel:#1d1323;--line:rgba(216,180,106,.35);--gold:#d8b46a;--cream:#f3e9d6;--muted:#bfae94;--purple:#6b3f86;--ok:#3f8f5a;--bad:#a8322d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#25162d 0%,var(--bg) 55%);color:var(--cream);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+.serif{font-family:"Songti TC","Noto Serif TC","PMingLiU",serif}
+a{color:var(--gold)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.hero{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:40px;align-items:center;padding:56px 0 36px}
+.hero img{width:100%;border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.55);outline:1px solid var(--line);outline-offset:6px}
+.kicker{color:var(--gold);letter-spacing:.35em;font-size:14px}
+h1{margin:8px 0 4px;font-size:clamp(48px,9vw,96px);letter-spacing:.12em;line-height:1.1}
+.role{font-size:22px;color:var(--gold);letter-spacing:.3em;margin-bottom:18px}
+.quote{border-left:3px solid var(--gold);padding:10px 16px;background:rgba(255,255,255,.04);border-radius:0 10px 10px 0;font-size:18px}
+.badge{display:inline-block;margin-top:16px;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+nav.jump{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0}
+nav.jump a{text-decoration:none;font-size:14px;padding:6px 14px;border-radius:999px;background:rgba(107,63,134,.35);border:1px solid var(--line);color:var(--cream)}
+section{padding:34px 0;border-top:1px solid rgba(216,180,106,.15)}
+h2{font-size:28px;letter-spacing:.12em;margin:0 0 18px}
+h2 small{font-size:14px;color:var(--muted);letter-spacing:.05em;margin-left:10px}
+video{width:100%;border-radius:12px;background:#000;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.note{font-size:14px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid rgba(216,180,106,.2);border-left:4px solid var(--purple);border-radius:10px;padding:14px 18px}
+.card h3{margin:0 0 6px;font-size:18px;color:var(--gold);letter-spacing:.08em}
+.card p,.card ul{margin:0;font-size:15.5px}
+.card ul{padding-left:20px}
+.wide{grid-column:1/-1}
+.q{background:var(--panel);border:1px solid rgba(216,180,106,.25);border-radius:14px;padding:18px 20px;margin:0 0 18px}
+.q .no{font-size:13px;color:var(--gold);letter-spacing:.2em}
+.q h3{margin:4px 0 14px;font-size:20px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:14px;align-items:center;width:100%;text-align:left;font:inherit;font-size:17px;color:var(--cream);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;transition:background .2s,border-color .2s}
+.opt:hover:not([disabled]){background:rgba(107,63,134,.35)}
+.opt b{flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--purple);font-family:"Avenir Next",Arial,sans-serif}
+.opt[disabled]{cursor:default}
+.opt.ok{border-color:var(--ok);background:rgba(63,143,90,.22)}
+.opt.ok b{background:var(--ok)}
+.opt.bad{border-color:var(--bad);background:rgba(168,50,45,.22)}
+.opt.bad b{background:var(--bad)}
+.fb{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;background:rgba(0,0,0,.25);font-size:15.5px}
+.fb.show{display:block}
+.fb strong{font-size:17px}
+.fb .src{display:block;margin-top:6px;font-size:13px;color:var(--muted)}
+.again{margin-top:10px;font:inherit;font-size:14px;color:var(--gold);background:none;border:1px solid var(--line);border-radius:999px;padding:4px 14px;cursor:pointer}
+.score{font-size:15px;color:var(--muted);margin:0 0 14px}
+ol.steps{margin:0;padding-left:22px}
+ol.steps li{margin:0 0 10px}
+ol.steps em{font-style:normal;color:var(--gold)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.gallery img{width:100%;border-radius:8px;display:block}
+audio{width:100%;margin:6px 0 4px}
+ul.src{font-size:14.5px;padding-left:20px}
+footer{padding:30px 0 46px;font-size:13px;color:var(--muted);border-top:1px solid rgba(216,180,106,.15)}
+@media (max-width:760px){
+  header.hero{grid-template-columns:1fr;gap:22px;padding-top:28px;text-align:center}
+  .hero img{max-width:240px;margin:0 auto;display:block}
+  .quote{text-align:left}
+  nav.jump{justify-content:center}
+  .grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  h2{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <img src="assets/portrait.jpg" width="720" height="1280" alt="血櫻形象圖：黑色捲髮、黑色立領官服與紫內裡披風（AI 生成）">
+  <div>
+    <div class="kicker">AI 虛擬角色・一分鐘歷史小劇場</div>
+    <h1 class="serif">血櫻</h1>
+    <div class="role serif">說書皇帝</div>
+    <p class="quote serif">「朕是血櫻。今天不背年代，我們只問一個問題：如果你是當時的人，你會怎麼選？」</p>
+    <nav class="jump"><a href="#film">看影片</a><a href="#quiz">小測驗</a><a href="#profile">角色設定</a><a href="#making">製作說明</a></nav>
+    <span class="badge">角色、形象、聲音、音樂、插圖皆為 AI 生成之虛構內容</span>
+  </div>
+</header>
+
+<section id="film">
+  <h2 class="serif">第一回　一六六一，熱蘭遮城<small>約 86 秒</small></h2>
+  <video controls playsinline preload="metadata" poster="assets/poster.jpg">
+    <source src="assets/xueying.mp4" type="video/mp4">
+    你的瀏覽器不支援影片播放，可以<a href="assets/xueying.mp4">直接下載影片</a>。
+  </video>
+  <p class="note">字幕已燒在畫面裡。插圖是 AI 畫的示意圖，不是精確的歷史復原。</p>
+</section>
+
+<section id="quiz">
+  <h2 class="serif">小測驗<small>影片最後那一題，答案在這裡</small></h2>
+  <p class="score" id="score">還沒作答。三題都答完，朕給你打分數。</p>
+  <div id="quizbox"></div>
+</section>
+
+<section id="profile">
+  <h2 class="serif">角色設定</h2>
+  <div class="grid">
+    <div class="card"><h3>用途與觀眾</h3><p>以第一人稱「帶你走進歷史」的虛擬講者，做成 1–2 分鐘的歷史小短片。觀眾是對歷史有興趣、但覺得課本太枯燥的高中生與一般大眾。</p></div>
+    <div class="card"><h3>個性</h3><p>冷靜、愛說故事、對歷史很有熱情；嘴上偶爾毒舌，但很照顧聽眾，看到有人聽不懂會換個說法再講一次。</p></div>
+    <div class="card"><h3>外觀</h3><p>黑色捲髮；黑色高立領官服、五顆銅扣；黑色披風、深紫內裡，兩顆圓扣以金鍊相連；白長褲配紅色側條、黑色長靴。</p></div>
+    <div class="card"><h3>說話方式</h3><p>開場自稱「朕」，有皇帝氣勢；進入講解就改成白話「我們」，常用現代比喻。句子短、一次只講一個重點，講完會問聽眾一個小問題。</p></div>
+    <div class="card"><h3>能力範圍</h3><ul><li>會：講解歷史事件的來龍去脈、帶讀一段史料、出 1–2 題小測驗</li><li>不會：捏造史實（不確定就說「這段朕也不清楚，我們去查史料」）、不評論現實政治、不冒充任何真實人物</li></ul></div>
+    <div class="card"><h3>AI 矛盾檢查與修改</h3><ul><li>「朕」有距離感 ↔ 想親近高中生 → 只在開場用「朕」，講解改用「我們」</li><li>皇帝身份 ↔ 不評論現實政治 → 設定為虛構帝國，不影射任何真實國家</li><li>毒舌 ↔ 照顧聽眾 → 毒舌只針對歷史上的錯誤決策，對聽眾一律溫和</li></ul></div>
+  </div>
+</section>
+
+<section id="making">
+  <h2 class="serif">製作說明<small>用了哪些 AI、怎麼做的</small></h2>
+  <ol class="steps">
+    <li><em>角色設定</em>：先寫角色卡（用途、個性、外觀、說話方式、能力範圍），再請 AI 檢查設定裡的矛盾並修改。形象圖為 AI 生成，沿用基本版角色卡。</li>
+    <li><em>腳本</em>：Claude（Anthropic）協作撰寫 74 秒旁白，史實逐條對照維基百科條目；這次沒查到可靠出處的說法（例如「荷蘭人以為大船進不來」「趁漲潮進港」）先不寫。</li>
+    <li><em>配音</em>：Gemini TTS（gemini-3.8-flash-tts）。先讓 6 種男聲念同一段試音，由 Gemini 3.1 Pro 代聽評分，選了低沉、台灣口音的「Charon」。逐句生成，用 whisper.cpp 轉回文字＋Gemini 逐字拼音比對：抓到選項「B」被唸成「不」，改寫重錄。整段以 1.22 倍調速，控制在 74 秒。</li>
+    <li><em>主題曲</em>：Lyria 3 Pro（lyria-3-pro-preview）與 Lyria 3.5 各生成候選曲，純器樂（豎琴、弦樂、低鼓、古箏色彩）。三首交給 Gemini 代聽，挑「無人聲、最適合墊在旁白下」的一首，取 53 秒做主題曲。</li>
+    <li><em>插圖</em>：Gemini 3 Pro Image，以形象圖當「畫風參考」畫出大員海岸、船隊、圍城三張油畫厚塗風示意圖；提示詞明令不畫文字、旗幟、徽記。</li>
+    <li><em>剪輯</em>：ffmpeg 在本機合成 1920×1080 影片：靜態圖推鏡（zoompan）、交叉淡化（xfade）、字幕用 headless Chrome 排成 PNG 再疊上畫面；旁白出現時把音樂壓低（ducking），整體響度標準化。</li>
+    <li><em>網頁</em>：純 HTML／CSS／JavaScript，放在 GitHub Pages。</li>
+  </ol>
+  <div class="gallery">
+    <img src="assets/scene1.jpg" width="960" height="536" alt="AI 插圖：1661 年大員沙洲上的紅磚城堡" loading="lazy">
+    <img src="assets/scene2.jpg" width="960" height="536" alt="AI 插圖：晨霧中駛過水道的戎克船隊" loading="lazy">
+    <img src="assets/scene3.jpg" width="960" height="536" alt="AI 插圖：黃昏圍城，砲煙飄過城牆" loading="lazy">
+  </div>
+  <p><strong>角色主題曲</strong>（Lyria 3 Pro 生成，53 秒）</p>
+  <audio controls preload="none" src="assets/theme.mp3"></audio>
+  <h3 class="serif">史料出處</h3>
+  <ul class="src">
+    <li>維基百科〈<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E5%B9%B3%E5%8F%A4%E5%A0%A1" rel="noopener">安平古堡</a>〉（熱蘭遮城）：1624 年起建城、1661 年 4 月 30 日鄭軍由鹿耳門水道進入臺江內海、數日內攻下普羅民遮城、援軍與指揮官離去、1662 年 1 月 25 日烏特勒支堡失守、2 月 1 日締約</li>
+    <li>維基百科〈<a href="https://zh.wikipedia.org/wiki/%E6%8F%86%E4%B8%80" rel="noopener">揆一</a>〉：最後一任臺灣長官、曾警告總部而加強防衛計畫被拒、鄭軍約 25,000 人、圍城 9 個月、城內缺糧缺水與疾病、回巴達維亞後受審</li>
+    <li>維基百科〈<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%93%A1" rel="noopener">大員</a>〉：大員指今臺南安平一帶，熱蘭遮城建於此</li>
+    <li>維基百科〈<a href="https://zh.wikipedia.org/wiki/%E8%B5%A4%E5%B4%81%E6%A8%93" rel="noopener">赤崁樓</a>〉（普羅民遮城）、〈<a href="https://zh.wikipedia.org/wiki/%E9%B9%BF%E8%80%B3%E9%96%80" rel="noopener">鹿耳門</a>〉、〈<a href="https://zh.wikipedia.org/wiki/%E9%84%AD%E6%88%90%E5%8A%9F" rel="noopener">鄭成功</a>〉</li>
+  </ul>
+  <p class="note">各書對締約、交城日期記法略有出入（2 月 1 日締約；交城有 2 月 9 日、2 月 10 日兩說），影片只說到「1662 年 1 月」為止。</p>
+</section>
+
+<footer>
+  本頁角色、形象、聲音、音樂與插圖皆為 AI 生成。血櫻是虛構帝國的虛構皇帝，不影射任何現實國家、人物或政治立場。
+</footer>
+</div>
+
+<script>
+const QUIZ = [
+  { q: '1662 年初，援軍跑了、山丘上的烏特勒支堡也失守。你是荷蘭長官揆一，你會怎麼選？',
+    opts: ['死守到底，等下一批援軍', '談判投降，帶大家撤離', '丟下城堡，搭船突圍'], ans: 1,
+    why: ['援軍指揮官在 1661 年底就帶著船隊回巴達維亞了，制高點也丟了。史實上，評議會沒有選擇死守。',
+          '答對了。烏特勒支堡 1 月 25 日失守後，大員評議會 1 月 27 日決議停止抵抗、要求和談；2 月 1 日雙方簽約，荷蘭人交出熱蘭遮城、撤離大員。荷蘭東印度公司在這裡約 38 年（1624–1662）的經營就此結束。後話：揆一回到巴達維亞後被逮捕受審——想加強防禦被總部否決的人，最後還是被追究責任。',
+          '史實上揆一沒有棄城突圍，而是談判簽約之後才撤離。'],
+    src: '維基百科〈安平古堡〉〈揆一〉' },
+  { q: '1661 年 4 月 30 日，鄭成功的船隊從哪裡開進台江內海？',
+    opts: ['打狗（今高雄）', '鹿耳門水道', '淡水河口'], ans: 1,
+    why: ['不是這裡喔。打狗在更南邊，這一戰的主戰場在大員（今臺南安平）。',
+          '答對了。鄭軍由鹿耳門水道進入臺江內海，〈赤崁樓〉條目也記載是由曾任荷蘭通事的何斌引導通過鹿耳門港道。',
+          '不是這裡喔。淡水在台灣北部，這一戰發生在南部的大員。'],
+    src: '維基百科〈安平古堡〉〈赤崁樓〉' },
+  { q: '熱蘭遮城被圍了大約多久，荷蘭人才簽約交城？',
+    opts: ['九天', '九個月', '九年'], ans: 1,
+    why: ['比九天久得多。5 月強攻沒打下來之後，鄭軍改成長期封鎖。',
+          '答對了。從 1661 年 4 月底到 1662 年 2 月，大約九個月。',
+          '沒有那麼久。不到一年，1662 年 2 月就結束了。'],
+    src: '維基百科〈揆一〉〈安平古堡〉' }
+];
+const box = document.getElementById('quizbox'), scoreEl = document.getElementById('score');
+const result = new Array(QUIZ.length).fill(null);
+function updateScore() {
+  const done = result.filter(r => r !== null).length, right = result.filter(r => r === true).length;
+  if (done === 0) scoreEl.textContent = '還沒作答。三題都答完，朕給你打分數。';
+  else if (done < QUIZ.length) scoreEl.textContent = `已答 ${done} 題，答對 ${right} 題。`;
+  else scoreEl.textContent = right === QUIZ.length ? `三題全對。朕准你免背年代。` : `答對 ${right}／${QUIZ.length} 題。沒關係，我們再看一次影片。`;
+}
+QUIZ.forEach((item, qi) => {
+  const el = document.createElement('div'); el.className = 'q';
+  el.innerHTML = `<div class="no">第 ${qi + 1} 題</div><h3>${item.q}</h3><div class="opts"></div><div class="fb" aria-live="polite"></div>`;
+  const opts = el.querySelector('.opts'), fb = el.querySelector('.fb');
+  const buttons = item.opts.map((t, oi) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'opt';
+    b.innerHTML = `<b>${'ABC'[oi]}</b><span>${t}</span>`;
+    b.addEventListener('click', () => {
+      const right = oi === item.ans; result[qi] = right;
+      buttons.forEach((x, xi) => { x.disabled = true; if (xi === item.ans) x.classList.add('ok'); });
+      if (!right) b.classList.add('bad');
+      fb.innerHTML = `<strong>${right ? '✔ 答對' : '✘ 答錯'}</strong>　${item.why[oi]}<span class="src">出處：${item.src}</span>`;
+      const again = document.createElement('button'); again.type = 'button'; again.className = 'again'; again.textContent = '再試一次';
+      again.addEventListener('click', () => { result[qi] = null; buttons.forEach(x => { x.disabled = false; x.classList.remove('ok', 'bad'); }); fb.classList.remove('show'); fb.innerHTML = ''; updateScore(); });
+      fb.appendChild(again); fb.classList.add('show'); updateScore();
+    });
+    opts.appendChild(b); return b;
+  });
+  box.appendChild(el);
+});
+</script>
+</body>
+</html>
