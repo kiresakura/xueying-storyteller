@@ -117,7 +117,7 @@ footer{padding:30px 0 46px;font-size:13px;color:var(--muted);border-top:1px soli
   <ol class="steps">
     <li><em>角色設定</em>：先寫角色卡（用途、個性、外觀、說話方式、能力範圍），再請 AI 檢查設定裡的矛盾並修改。形象圖為 AI 生成，沿用基本版角色卡。</li>
     <li><em>腳本</em>：Claude（Anthropic）協作撰寫 74 秒旁白，史實逐條對照維基百科條目；這次沒查到可靠出處的說法（例如「荷蘭人以為大船進不來」「趁漲潮進港」）先不寫。</li>
-    <li><em>配音</em>：Gemini TTS（gemini-3.8-flash-tts）。先讓 6 種男聲念同一段試音，由 Gemini 3.1 Pro 代聽評分，選了低沉、台灣口音的「Charon」。逐句生成，用 whisper.cpp 轉回文字＋Gemini 逐字拼音比對：抓到選項「B」被唸成「不」，改寫重錄。整段以 1.22 倍調速，控制在 74 秒。</li>
+    <li><em>配音</em>：Gemini TTS（gemini-3.8-flash-tts）。先讓 6 種男聲念同一段試音，由 Gemini 3.1 Pro 代聽評分，選了低沉、台灣口音的「Charon」。逐句生成，用 whisper.cpp 轉回文字＋Gemini 逐字拼音比對：抓到選項「B」被唸成「不」、開場「朕是血櫻」加速後盲聽聽不清，兩句改寫重錄。除了開場那句，其餘以 1.22 倍調速，旁白控制在 74.5 秒。</li>
     <li><em>主題曲</em>：Lyria 3 Pro（lyria-3-pro-preview）與 Lyria 3.5 各生成候選曲，純器樂（豎琴、弦樂、低鼓、古箏色彩）。三首交給 Gemini 代聽，挑「無人聲、最適合墊在旁白下」的一首，取 53 秒做主題曲。</li>
     <li><em>插圖</em>：Gemini 3 Pro Image，以形象圖當「畫風參考」畫出大員海岸、船隊、圍城三張油畫厚塗風示意圖；提示詞明令不畫文字、旗幟、徽記。</li>
     <li><em>剪輯</em>：ffmpeg 在本機合成 1920×1080 影片：靜態圖推鏡（zoompan）、交叉淡化（xfade）、字幕用 headless Chrome 排成 PNG 再疊上畫面；旁白出現時把音樂壓低（ducking），整體響度標準化。</li>
